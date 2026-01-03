@@ -22,6 +22,7 @@ import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
 const RingFemaleIndexLazyRouteImport = createFileRoute('/ring-female/')()
+const ProgressingIndexLazyRouteImport = createFileRoute('/progressing/')()
 const JourneyIndexLazyRouteImport = createFileRoute('/journey/')()
 
 const R404Route = R404RouteImport.update({
@@ -40,6 +41,13 @@ const RingFemaleIndexLazyRoute = RingFemaleIndexLazyRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() =>
   import('./routes/ring-female/index.lazy').then((d) => d.Route),
+)
+const ProgressingIndexLazyRoute = ProgressingIndexLazyRouteImport.update({
+  id: '/progressing/',
+  path: '/progressing/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./routes/progressing/index.lazy').then((d) => d.Route),
 )
 const JourneyIndexLazyRoute = JourneyIndexLazyRouteImport.update({
   id: '/journey/',
@@ -86,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/journey': typeof JourneyIndexLazyRoute
+  '/progressing': typeof ProgressingIndexLazyRoute
   '/ring-female': typeof RingFemaleIndexLazyRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -99,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/journey': typeof JourneyIndexLazyRoute
+  '/progressing': typeof ProgressingIndexLazyRoute
   '/ring-female': typeof RingFemaleIndexLazyRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -113,6 +123,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/journey/': typeof JourneyIndexLazyRoute
+  '/progressing/': typeof ProgressingIndexLazyRoute
   '/ring-female/': typeof RingFemaleIndexLazyRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/journey'
+    | '/progressing'
     | '/ring-female'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -141,6 +153,7 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/journey'
+    | '/progressing'
     | '/ring-female'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -154,6 +167,7 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/journey/'
+    | '/progressing/'
     | '/ring-female/'
     | '/demo/api/names'
     | '/demo/start/api-request'
@@ -168,6 +182,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   JourneyIndexLazyRoute: typeof JourneyIndexLazyRoute
+  ProgressingIndexLazyRoute: typeof ProgressingIndexLazyRoute
   RingFemaleIndexLazyRoute: typeof RingFemaleIndexLazyRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
@@ -199,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/ring-female'
       fullPath: '/ring-female'
       preLoaderRoute: typeof RingFemaleIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progressing/': {
+      id: '/progressing/'
+      path: '/progressing'
+      fullPath: '/progressing'
+      preLoaderRoute: typeof ProgressingIndexLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journey/': {
@@ -264,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   JourneyIndexLazyRoute: JourneyIndexLazyRoute,
+  ProgressingIndexLazyRoute: ProgressingIndexLazyRoute,
   RingFemaleIndexLazyRoute: RingFemaleIndexLazyRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,

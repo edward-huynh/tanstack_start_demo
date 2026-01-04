@@ -20,7 +20,10 @@ const aboutData = [
 
 export const ProgressSection2 = () => {
   return (
-    <div className="flex flex-col gap-4 min-h-screen px-10 py-32 overflow-hidden">
+    <div
+      id="section_2"
+      className="flex flex-col gap-4 min-h-screen px-10 py-32 overflow-hidden"
+    >
       {aboutData.map((item, index) => (
         <motion.div
           key={item.title}

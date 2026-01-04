@@ -150,3 +150,44 @@ code {
     @apply bg-background text-foreground;
   }
 }
+
+
+.shadow-priority {
+  box-shadow: 
+      /* 1. Bóng sát cạnh (tạo độ dày cho mặt bàn) */
+      0 5px 0 #013A40, 
+      /* 2. Bóng đổ xuống sàn (đậm, ngay dưới bàn) */
+      0 15px 20px rgba(0, 0, 0, 0.3),
+      /* 3. Bóng lan tỏa (tạo cảm giác ánh sáng môi trường) */
+      0 30px 50px rgba(0, 0, 0, 0.15);
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #013A40;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted-foreground);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground);
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #013A40 transparent;
+  }
+}

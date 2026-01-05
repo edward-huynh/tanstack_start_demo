@@ -31,20 +31,22 @@ export const ProgressSection2 = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, delay: index * 0.2 }}
-          className={`flex items-center gap-10 rounded-2xl ${index % 2 == 0 ? 'flex-row-reverse' : ''}`}
+          className={`flex flex-col lg:flex-row items-center gap-10 rounded-2xl ${index % 2 == 0 ? 'lg:flex-row-reverse' : ''}`}
         >
           <div className="w-[50%] aspect-video bg-white/20 backdrop-blur-3xl rounded-2xl"></div>
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="w-[50%] p-5 flex flex-col gap-2 z-20"
+            transition={{ duration: 1, delay: 0.5 }}
+            className="w-[50%] p-5 flex flex-col gap-2 z-20 lg:w-[50%]"
           >
-            <span className="text-4xl font-semibold font-delius text-white drop-shadow-lg">
+            <span className="text-2xl lg:text-4xl font-semibold font-delius text-white drop-shadow-lg">
               Jemmia Diamond
             </span>
-            <span className="text-2xl text-white/80">{item.title}</span>
+            <span className="text-lg lg:text-2xl text-white/80">
+              {item.title}
+            </span>
             <span className="text-white/80">{item.description}</span>
           </motion.div>
         </motion.div>

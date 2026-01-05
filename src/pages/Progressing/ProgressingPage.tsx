@@ -12,7 +12,6 @@ import { ProgressSection5 } from './components/ProgressSection5'
 import { ProgressSection6 } from './components/ProgressSection6'
 import { ProgressDiamond } from './components/ProgressDiamond'
 import { DiamondLoader } from './components/DiamondLoader'
-import Particles from '@/components/Particles'
 
 export const ProgressingPage = () => {
   const [isModelLoaded, setIsModelLoaded] = useState(false)

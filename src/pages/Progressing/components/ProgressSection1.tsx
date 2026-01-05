@@ -1,6 +1,6 @@
 import Particles from '@/components/Particles'
 import { motion } from 'framer-motion'
-import { ArrowDown, ChevronsDown } from 'lucide-react'
+import { ChevronsDown } from 'lucide-react'
 
 export const ProgressSection1 = () => {
   return (
